@@ -3,6 +3,13 @@
 import type React from "react"
 import { useEffect, useState } from "react"
 
+declare global {
+  interface Window {
+    fbq: (...args: any[]) => void
+    _fbq: (...args: any[]) => void
+  }
+}
+
 function usePCJOrigin() {
   const [isFromTetelEcosystem, setIsFromTetelEcosystem] = useState(false)
 
@@ -41,80 +48,54 @@ export default function RootLayoutContent({
   }, [])
 
   useEffect(() => {
-    // — Verifica se o Meta Pixel está ativo
-    if (!(window as any).fbq) {
-      console.warn("⚠️ Meta Pixel não detectado. Verifique a inicialização.")
-      return
-    }
+    // Load Meta Pixel
+    !((f, b, e, v, n, t, s) => {
+      if (f.fbq) return
+      n = f.fbq = () => {
+        n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+      }
+      if (!f._fbq) f._fbq = n
+      n.push = n
+      n.loaded = !0
+      n.version = "2.0"
+      n.queue = []
+      t = b.createElement(e)
+      t.async = !0
+      t.src = v
+      s = b.getElementsByTagName(e)[0]
+      s.parentNode.insertBefore(t, s)
+    })(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js")
 
-    const fbq = (window as any).fbq
+    window.fbq("init", "1305167264321996")
+    window.fbq("track", "PageView")
 
-    // 1️⃣ Page View — sempre ao carregar a LP
-    fbq("track", "PageView")
-    console.log("✅ PCJ MetaLayer: PageView registrado")
-
-    // 2️⃣ Clicks & Leads — rastreia botões e CTAs
-    const leadElements = document.querySelectorAll('a[href*="tetel"], a[href*="whatsapp"], button, .cta-button, .btn')
-
-    leadElements.forEach((el) => {
-      el.addEventListener("click", () => {
-        const label = el.getAttribute("aria-label") || el.textContent?.trim() || "Lead-Desconhecido"
-        fbq("trackCustom", "LeadClick", { label })
-        console.log(`🎯 Lead registrado: ${label}`)
-      })
-    })
-
-    // 3️⃣ Scroll Depth — intenção de engajamento
+    // Scroll tracking
+    let sent25 = false,
+      sent50 = false,
+      sent90 = false
     const handleScroll = () => {
-      const scrollPercent = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100
+      const scrollPercent = window.scrollY / (document.body.scrollHeight - window.innerHeight)
 
-      if (scrollPercent > 25 && !(window as any)._25Sent) {
-        fbq("trackCustom", "Scroll25")
-        ;(window as any)._25Sent = true
-        console.log("📊 Scroll 25% registrado")
+      if (!sent25 && scrollPercent > 0.25) {
+        window.fbq("trackCustom", "tp_scroll_25")
+        sent25 = true
       }
-      if (scrollPercent > 50 && !(window as any)._50Sent) {
-        fbq("trackCustom", "Scroll50")
-        ;(window as any)._50Sent = true
-        console.log("📊 Scroll 50% registrado")
+      if (!sent50 && scrollPercent > 0.5) {
+        window.fbq("trackCustom", "tp_scroll_50")
+        sent50 = true
       }
-      if (scrollPercent > 90 && !(window as any)._90Sent) {
-        fbq("trackCustom", "Scroll90")
-        ;(window as any)._90Sent = true
-        console.log("📊 Scroll 90% registrado")
+      if (!sent90 && scrollPercent > 0.9) {
+        window.fbq("trackCustom", "tp_scroll_90")
+        sent90 = true
       }
     }
-
     window.addEventListener("scroll", handleScroll)
 
-    // 4️⃣ WhatsApp Flutuante — interação direta
-    const whatsappBtn = document.querySelector("button[aria-label='Falar no WhatsApp']")
-    if (whatsappBtn) {
-      whatsappBtn.addEventListener("click", () => {
-        fbq("trackCustom", "WhatsAppClick")
-        console.log("💬 Evento WhatsApp registrado")
-      })
-    }
-
-    // 5️⃣ Tempo de Sessão (Engajamento)
-    const start = Date.now()
-    const engagementTimer = setInterval(() => {
-      const seconds = Math.floor((Date.now() - start) / 1000)
-      if (seconds % 30 === 0) {
-        fbq("trackCustom", "TempoNaPagina", { segundos: seconds })
-        console.log(`🕒 Engajamento: ${seconds}s`)
-      }
-    }, 5000)
-
-    // 🔚 Limpeza
-    return () => {
-      window.removeEventListener("scroll", handleScroll)
-      clearInterval(engagementTimer)
-    }
+    return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
   return (
-    <>
+    <div className="root-container">
       {isFromTetelEcosystem && (
         <header className="w-full bg-zinc-900 text-white py-4 px-6">
           <div className="max-w-7xl mx-auto flex items-center gap-3">
@@ -124,6 +105,6 @@ export default function RootLayoutContent({
         </header>
       )}
       {children}
-    </>
+    </div>
   )
 }
