@@ -15,7 +15,7 @@ function usePCJOrigin() {
 
   useEffect(() => {
     const referrer = document.referrer
-    const tetelDomains = ["tetel.com.br", "fivecom.com.br", "tetelpontocom.com"]
+    const tetelDomains = ["tetel.com.br", "fivecom.com.br", "tetelpontocom.com", "tetel.online"]
     const isTetelOrigin = tetelDomains.some((domain) => referrer.includes(domain))
     setIsFromTetelEcosystem(isTetelOrigin)
   }, [])
@@ -52,6 +52,7 @@ export default function RootLayoutContent({
     !((f, b, e, v, n, t, s) => {
       if (f.fbq) return
       n = f.fbq = () => {
+        // @ts-expect-error arguments from fbq
         n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments)
       }
       if (!f._fbq) f._fbq = n
@@ -63,7 +64,7 @@ export default function RootLayoutContent({
       t.async = !0
       t.src = v
       s = b.getElementsByTagName(e)[0]
-      s.parentNode.insertBefore(t, s)
+      s.parentNode?.insertBefore(t, s)
     })(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js")
 
     window.fbq("init", "1305167264321996")
@@ -73,6 +74,7 @@ export default function RootLayoutContent({
     let sent25 = false,
       sent50 = false,
       sent90 = false
+
     const handleScroll = () => {
       const scrollPercent = window.scrollY / (document.body.scrollHeight - window.innerHeight)
 
@@ -89,8 +91,8 @@ export default function RootLayoutContent({
         sent90 = true
       }
     }
-    window.addEventListener("scroll", handleScroll)
 
+    window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
@@ -99,7 +101,11 @@ export default function RootLayoutContent({
       {isFromTetelEcosystem && (
         <header className="w-full bg-zinc-900 text-white py-4 px-6">
           <div className="max-w-7xl mx-auto flex items-center gap-3">
-            <img src="/images/logo1-tetelpontocom.png" alt="TetelPontocom" className="h-10 w-10 rounded-full" />
+            <img
+              src="/images/logo1-tetelpontocom.png"
+              alt="TetelPontocom"
+              className="h-10 w-10 rounded-full tetel-logo"
+            />
             <h1 className="text-lg font-semibold">TetelPontocom</h1>
           </div>
         </header>
