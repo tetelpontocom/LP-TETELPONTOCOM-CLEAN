@@ -8,15 +8,15 @@ import { useEffect, useState } from "react"
 const HERO_FRAMES = [
   {
     src: "/images/hero-tetelpontocom-1.jpg",
-    alt: "Soluções digitais para você — TetelPontocom (Frame 1)",
+    alt: "Soluções digitais com propósito, clareza e confiança — TetelPontocom (Frame 1)",
   },
   {
     src: "/images/hero-tetelpontocom-2.jpg",
-    alt: "Soluções digitais para você — TetelPontocom (Frame 2)",
+    alt: "Soluções digitais com propósito, clareza e confiança — TetelPontocom (Frame 2)",
   },
   {
     src: "/images/hero-tetelpontocom-3.jpg",
-    alt: "Soluções digitais para você — TetelPontocom (Frame 3)",
+    alt: "Soluções digitais com propósito, clareza e confiança — TetelPontocom (Frame 3)",
   },
 ]
 
@@ -34,16 +34,16 @@ function HeroCinematica() {
   }, [])
 
   return (
-    <section className="hero-cinematica reveal w-full bg-[#FFF6EF]">
+    <section className="hero-cinematica w-full bg-[#FFF6EF] reveal">
       <div className="max-w-5xl mx-auto px-6 py-14 md:py-20">
         {/* BLOCO VISUAL */}
-        <div className="relative w-full max-w-xl mx-auto rounded-2xl overflow-hidden shadow-md aspect-[4/5] md:aspect-[3/4]">
+        <div className="relative w-full max-w-xl mx-auto rounded-2xl overflow-hidden shadow-md aspect-[3/4] md:aspect-[4/5] glass-box">
           {HERO_FRAMES.map((frame, index) => (
             <img
               key={frame.src}
               src={frame.src || "/placeholder.svg"}
               alt={frame.alt}
-              className={`absolute inset-0 w-full h-full object-cover object-top transition-opacity duration-700 ${
+              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${
                 index === activeIndex ? "opacity-100" : "opacity-0"
               }`}
             />
@@ -52,11 +52,9 @@ function HeroCinematica() {
 
         {/* TEXTO + CTA */}
         <div className="mt-10 text-center max-w-3xl mx-auto">
-          <p className="text-xs md:text-sm font-medium uppercase tracking-[0.25em] text-black/60 mb-3">
-            Ecossistema Tetel • Curadoria Digital
-          </p>
+          <p className="tetel-sub mb-3">Ecossistema Tetel • Curadoria Digital</p>
 
-          <h1 className="text-3xl md:text-4xl font-semibold leading-snug mb-4">
+          <h1 className="text-3xl md:text-4xl font-semibold leading-snug tetel-title mb-4">
             Soluções digitais com propósito,
             <br /> clareza e confiança.
           </h1>
@@ -67,13 +65,13 @@ function HeroCinematica() {
           </p>
 
           <div className="flex flex-wrap justify-center gap-3">
-            <a href="#solucoes" className="inline-flex items-center px-5 py-3 rounded-full bg-black text-white">
+            <a href="#solucoes" className="btn-glass inline-flex items-center px-6 py-3">
               Explorar soluções
             </a>
 
             <a
-              href="https://wa.me/5582999176900?text=Ol%C3%A1!%20Vim%20da%20TetelPontocom%2C%20na%20se%C3%A7%C3%A3o%20principal."
-              className="inline-flex items-center px-5 py-3 rounded-full border border-black/10 bg-white/80 text-black"
+              href="https://wa.me/5582999176900?text=Ol%C3%A1!%20Vim%20da%20TetelPontocom."
+              className="inline-flex items-center px-6 py-3 rounded-full border border-black/10 bg-white/80 text-black"
             >
               Falar com TetelPontocom →
             </a>
@@ -81,6 +79,25 @@ function HeroCinematica() {
         </div>
       </div>
     </section>
+  )
+}
+
+// =========================================
+// CARD COMPONENT (compartilhado)
+// =========================================
+function SolucaoCard({ image, title, desc, href }) {
+  return (
+    <div className="min-w-[260px] max-w-[260px] md:max-w-none md:min-w-0 bg-white/90 card p-5 rounded-2xl shadow-md border flex flex-col">
+      <img src={image || "/placeholder.svg"} alt={title} className="w-full h-40 object-contain rounded-xl mb-4" />
+
+      <h3 className="text-xl font-semibold mb-2">{title}</h3>
+
+      <p className="text-[#444] mb-3 leading-relaxed">{desc}</p>
+
+      <a href={href} className="text-[#3B82F6] font-medium inline-flex mt-auto">
+        Entrar →
+      </a>
+    </div>
   )
 }
 
@@ -96,38 +113,42 @@ export default function Page() {
       {/* SOLUÇÕES PRINCIPAIS */}
       <section id="solucoes" className="w-full max-w-5xl px-6 pb-16 reveal">
         <h2 className="text-2xl font-semibold mb-6 text-center">Soluções Principais</h2>
+
         <div className="grid md:grid-cols-3 gap-6">
-          {/* Faça Caixa Agora */}
-          <div className="card p-6 rounded-xl border border-[#e5e5e5] bg-white shadow-sm">
+          <div className="card p-6 rounded-xl shadow-sm border">
             <h3 className="text-xl font-semibold mb-3">Faça Caixa Agora</h3>
             <p className="text-[#444] mb-4">
-              Estratégia direta para faturar de forma imediata com estrutura simples e validada.
+              Estratégia direta para faturar rapidamente com estrutura simples e validada.
             </p>
-            <a href="https://facacaixaagora.tetel.online/?ref=tetelpontocom" className="text-[#3B82F6] font-medium">
+            <a
+              href="https://facacaixaagora.tetel.online/?ref=tetelpontocom"
+              className="text-[#3B82F6] font-medium inline-flex"
+            >
               Entrar →
             </a>
           </div>
 
-          {/* Minha IA */}
-          <div className="card p-6 rounded-xl border border-[#e5e5e5] bg-white shadow-sm">
+          <div className="card p-6 rounded-xl shadow-sm border">
             <h3 className="text-xl font-semibold mb-3">Minha IA</h3>
             <p className="text-[#444] mb-4">
-              Inteligência emocional, estratégica e profissional integrada em um sistema único.
+              Inteligência emocional, estratégica e profissional reunida em um só sistema.
             </p>
-            <a href="https://minhaia.tetel.online/?ref=tetelpontocom" className="text-[#3B82F6] font-medium">
+            <a
+              href="https://minhaia.tetel.online/?ref=tetelpontocom"
+              className="text-[#3B82F6] font-medium inline-flex"
+            >
               Entrar →
             </a>
           </div>
 
-          {/* Starter Tetel */}
-          <div className="card p-6 rounded-xl border border-[#e5e5e5] bg-white shadow-sm">
+          <div className="card p-6 rounded-xl shadow-sm border">
             <h3 className="text-xl font-semibold mb-3">Starter Tetel</h3>
             <p className="text-[#444] mb-4">
               Estrutura completa + direcionamento estratégico para acelerar resultados.
             </p>
             <a
               href="https://facacaixaagoraupsell.tetel.online/?ref=tetelpontocom"
-              className="text-[#3B82F6] font-medium"
+              className="text-[#3B82F6] font-medium inline-flex"
             >
               Entrar →
             </a>
@@ -135,134 +156,83 @@ export default function Page() {
         </div>
       </section>
 
-      {/* CURADORIA SHOPEE */}
-      <section className="w-full max-w-5xl px-6 pb-16 reveal">
-        <h2 className="text-2xl font-semibold mb-6 text-center">Curadoria Shopee</h2>
+      {/* ============================================================
+          CARROSSEL MOBILE + GRID DESKTOP
+      ============================================================ */}
 
-        <img
-          src="/images/tetel-shopee.jpg"
-          alt="Curadoria Shopee TetelPontocom"
-          className="w-full rounded-xl shadow-md mb-5"
-        />
+      <section className="w-full max-w-5xl px-6 pb-20 reveal">
+        <h2 className="text-2xl font-semibold mb-8 text-center">Soluções do Ecossistema</h2>
 
-        <p className="text-[#444] text-center max-w-3xl mx-auto mb-4">
-          Seleção dos melhores produtos da Shopee com critério real: utilidade, durabilidade e custo-benefício.
-        </p>
+        {/* MOBILE — CARROSSEL */}
+        <div className="md:hidden w-full overflow-x-auto no-scrollbar flex gap-5 pb-4">
+          <SolucaoCard
+            image="/images/tetel-shopee.jpg"
+            title="Curadoria Shopee"
+            desc="Seleção dos melhores produtos com critérios de utilidade e custo-benefício."
+            href="https://shopee.tetel.online/?ref=tetelpontocom"
+          />
 
-        <div className="text-center">
-          <a href="https://shopee.tetel.online/?ref=tetelpontocom" className="text-[#3B82F6] font-medium">
-            Entrar →
-          </a>
+          <SolucaoCard
+            image="/images/tetel-instagram-analyzer.jpg"
+            title="Instagram Analyzer"
+            desc="Diagnóstico profundo com leitura visual, métricas e plano de ação."
+            href="https://instagramanalyzer.tetel.online/?ref=tetelpontocom"
+          />
+
+          <SolucaoCard
+            image="/images/tetel-minha-ia.jpg"
+            title="Minha IA"
+            desc="Inteligência emocional, estratégica e profissional integrada."
+            href="https://minhaia.tetel.online/?ref=tetelpontocom"
+          />
+
+          <SolucaoCard
+            image="/images/tetel-plr-bolos.jpg"
+            title="Bolos Caseiros Lucrativos"
+            desc="Negócio simples e validado — estrutura completa para começar hoje."
+            href="https://boloscaseiros.tetel.online/?ref=tetelpontocom"
+          />
         </div>
-      </section>
 
-      {/* INSTAGRAM ANALYZER */}
-      <section className="w-full max-w-5xl px-6 pb-16 reveal">
-        <h2 className="text-2xl font-semibold mb-6 text-center">Instagram Analyzer</h2>
+        {/* DESKTOP — GRID PREMIUM */}
+        <div className="hidden md:grid md:grid-cols-2 gap-8">
+          <SolucaoCard
+            image="/images/tetel-shopee.jpg"
+            title="Curadoria Shopee"
+            desc="Seleção dos melhores produtos com critérios de utilidade e custo-benefício."
+            href="https://shopee.tetel.online/?ref=tetelpontocom"
+          />
 
-        <img
-          src="/images/tetel-instagram-analyzer.jpg"
-          alt="Instagram Analyzer TetelPontocom"
-          className="w-full rounded-xl shadow-md mb-5"
-        />
+          <SolucaoCard
+            image="/images/tetel-instagram-analyzer.jpg"
+            title="Instagram Analyzer"
+            desc="Diagnóstico profundo com leitura visual, métricas e plano de ação."
+            href="https://instagramanalyzer.tetel.online/?ref=tetelpontocom"
+          />
 
-        <p className="text-[#444] text-center max-w-3xl mx-auto mb-4">
-          Diagnóstico profundo com leitura visual, métricas, auditoria e plano de ação para crescer com consistência.
-        </p>
+          <SolucaoCard
+            image="/images/tetel-minha-ia.jpg"
+            title="Minha IA"
+            desc="Inteligência emocional, estratégica e profissional integrada."
+            href="https://minhaia.tetel.online/?ref=tetelpontocom"
+          />
 
-        <div className="text-center">
-          <a href="https://instagramanalyzer.tetel.online/?ref=tetelpontocom" className="text-[#3B82F6] font-medium">
-            Entrar →
-          </a>
-        </div>
-      </section>
-
-      {/* MINHA IA — DESTAQUE */}
-      <section className="w-full max-w-5xl px-6 pb-16 reveal">
-        <h2 className="text-2xl font-semibold mb-6 text-center">Minha IA</h2>
-
-        <img
-          src="/images/tetel-minha-ia.jpg"
-          alt="Minha IA — Inteligência Pessoal"
-          className="w-full rounded-xl shadow-md mb-5"
-        />
-
-        <p className="text-[#444] text-center max-w-3xl mx-auto mb-4">
-          Inteligência emocional, estratégica e profissional reunida para organizar sua vida por dentro e por fora.
-        </p>
-
-        <div className="text-center">
-          <a href="https://minhaia.tetel.online/?ref=tetelpontocom" className="text-[#3B82F6] font-medium">
-            Entrar →
-          </a>
-        </div>
-      </section>
-
-      {/* NEGÓCIOS PRONTOS — BOLOS CASEIROS */}
-      <section className="w-full max-w-5xl px-6 pb-16 reveal">
-        <h2 className="text-2xl font-semibold mb-6 text-center">Negócios Prontos</h2>
-
-        <img
-          src="/images/tetel-plr-bolos.jpg"
-          alt="Bolos Caseiros Lucrativos — Negócio Pronto"
-          className="w-full rounded-xl shadow-md mb-5"
-        />
-
-        <h3 className="text-xl font-semibold mb-3 text-center">Bolos Caseiros Lucrativos</h3>
-
-        <p className="text-[#444] text-center max-w-3xl mx-auto mb-4">
-          Negócio simples, acessível e validado. Estrutura pronta para começar imediatamente.
-        </p>
-
-        <div className="text-center">
-          <a href="https://boloscaseiros.tetel.online/?ref=tetelpontocom" className="text-[#3B82F6] font-medium">
-            Entrar →
-          </a>
-        </div>
-      </section>
-
-      {/* SERVIÇOS */}
-      <section className="w-full max-w-5xl px-6 pb-24 reveal">
-        <h2 className="text-2xl font-semibold mb-6 text-center">Serviços</h2>
-
-        <div className="grid md:grid-cols-2 gap-6">
-          {/* AGENTES DE IA */}
-          <div className="card p-6 rounded-xl border border-[#e5e5e5] bg-white shadow-sm">
-            <h3 className="text-xl font-semibold mb-3">Agentes de IA</h3>
-            <p className="text-[#444] mb-4">
-              Criamos agentes inteligentes personalizados para vendas, suporte e operações.
-            </p>
-            <a
-              href="https://wa.me/5582999176900?text=Ol%C3%A1!%20Vim%20do%20site%20TetelPontocom%2C%20na%20se%C3%A7%C3%A3o%20Agentes%20de%20IA."
-              className="text-[#3B82F6] font-medium"
-            >
-              Falar →
-            </a>
-          </div>
-
-          {/* DESENVOLVIMENTO WEB */}
-          <div className="card p-6 rounded-xl border border-[#e5e5e5] bg-white shadow-sm">
-            <h3 className="text-xl font-semibold mb-3">Desenvolvimento Web &amp; Automações</h3>
-            <p className="text-[#444] mb-4">
-              Construção de páginas, sistemas e fluxos inteligentes com clareza e resultado.
-            </p>
-            <a
-              href="https://wa.me/5582999176900?text=Ol%C3%A1!%20Vim%20da%20TetelPontocom%2C%20na%20se%C3%A7%C3%A3o%20Desenvolvimento%20Web."
-              className="text-[#3B82F6] font-medium"
-            >
-              Falar →
-            </a>
-          </div>
+          <SolucaoCard
+            image="/images/tetel-plr-bolos.jpg"
+            title="Bolos Caseiros Lucrativos"
+            desc="Negócio simples e validado — estrutura completa para começar hoje."
+            href="https://boloscaseiros.tetel.online/?ref=tetelpontocom"
+          />
         </div>
       </section>
 
       {/* CONTATO FINAL */}
-      <section className="w-full max-w-5xl px-6 pb-32 text-center reveal">
+      <section className="w-full max-w-5xl px-6 pb-24 text-center reveal">
         <h2 className="text-2xl font-semibold mb-4">Fale com TetelPontocom</h2>
         <p className="text-[#444] mb-6">Projetos, dúvidas e orientações — fale diretamente comigo.</p>
 
         <a
-          href="https://wa.me/5582999176900?text=Ol%C3%A1!%20Vim%20da%20TetelPontocom%20e%20gostaria%20de%20falar."
+          href="https://wa.me/5582999176900?text=Ol%C3%A1!%20Vim%20da%20TetelPontocom."
           className="text-[#3B82F6] font-medium text-lg"
         >
           Falar com TetelPontocom →
