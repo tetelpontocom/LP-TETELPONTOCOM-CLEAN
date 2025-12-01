@@ -1,23 +1,26 @@
 "use client"
 
 import type React from "react"
+
 import { useEffect, useState } from "react"
 
 declare global {
   interface Window {
     fbq: (...args: any[]) => void
-    _fbq: (...args: any[]) => void
+    _fbq: any
   }
 }
 
-function usePCJOrigin() {
+function useTetelOriginDetector() {
   const [isFromTetelEcosystem, setIsFromTetelEcosystem] = useState(false)
 
   useEffect(() => {
     const referrer = document.referrer
-    const tetelDomains = ["tetel.com.br", "fivecom.com.br", "tetelpontocom.com", "tetel.online"]
-    const isTetelOrigin = tetelDomains.some((domain) => referrer.includes(domain))
-    setIsFromTetelEcosystem(isTetelOrigin)
+
+    const tetelDomains = ["tetel.online", "tetelpontocom.com", "tetel.com.br", "fivecom.com.br"]
+
+    const match = tetelDomains.some((d) => referrer.includes(d))
+    setIsFromTetelEcosystem(match)
   }, [])
 
   return isFromTetelEcosystem
@@ -25,57 +28,57 @@ function usePCJOrigin() {
 
 export default function RootLayoutContent({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode
-}>) {
-  const isFromTetelEcosystem = usePCJOrigin()
+}) {
+  const isFromTetelEcosystem = useTetelOriginDetector()
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) entry.target.classList.add("visible")
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible")
+          }
         })
       },
       { threshold: 0.15 },
     )
 
-    document
-      .querySelectorAll(".reveal, .fade-section, .slide-section, section, .card")
-      .forEach((el) => observer.observe(el))
+    const elements = document.querySelectorAll(".reveal, .fade-section, .slide-section, section, .card")
+
+    elements.forEach((el) => observer.observe(el))
 
     return () => observer.disconnect()
   }, [])
 
   useEffect(() => {
-    // Load Meta Pixel
-    !((f, b, e, v, n, t, s) => {
+    ;((f, b, e, v, n, t, s) => {
       if (f.fbq) return
       n = f.fbq = () => {
-        // @ts-expect-error arguments from fbq
+        // @ts-ignore
         n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments)
       }
       if (!f._fbq) f._fbq = n
       n.push = n
-      n.loaded = !0
+      n.loaded = true
       n.version = "2.0"
       n.queue = []
       t = b.createElement(e)
-      t.async = !0
+      t.async = true
       t.src = v
       s = b.getElementsByTagName(e)[0]
-      s.parentNode?.insertBefore(t, s)
+      s?.parentNode?.insertBefore(t, s)
     })(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js")
 
     window.fbq("init", "1305167264321996")
     window.fbq("track", "PageView")
 
-    // Scroll tracking
-    let sent25 = false,
-      sent50 = false,
-      sent90 = false
+    let sent25 = false
+    let sent50 = false
+    let sent90 = false
 
-    const handleScroll = () => {
+    const onScroll = () => {
       const scrollPercent = window.scrollY / (document.body.scrollHeight - window.innerHeight)
 
       if (!sent25 && scrollPercent > 0.25) {
@@ -92,24 +95,25 @@ export default function RootLayoutContent({
       }
     }
 
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
+    window.addEventListener("scroll", onScroll)
+    return () => window.removeEventListener("scroll", onScroll)
   }, [])
 
   return (
     <div className="root-container">
       {isFromTetelEcosystem && (
-        <header className="w-full bg-zinc-900 text-white py-4 px-6">
-          <div className="max-w-7xl mx-auto flex items-center gap-3">
+        <header className="w-full bg-black text-white">
+          <div className="max-w-6xl mx-auto px-6 py-3 flex items-center gap-3">
             <img
               src="/images/logo1-tetelpontocom.png"
               alt="TetelPontocom"
-              className="h-10 w-10 rounded-full tetel-logo"
+              className="h-8 w-8 rounded-full object-cover"
             />
-            <h1 className="text-lg font-semibold">TetelPontocom</h1>
+            <span className="text-sm font-medium tracking-wide">TetelPontocom</span>
           </div>
         </header>
       )}
+
       {children}
     </div>
   )
