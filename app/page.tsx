@@ -37,13 +37,13 @@ function HeroCinematica() {
     <section className="hero-cinematica w-full bg-[#FFF6EF] reveal">
       <div className="max-w-5xl mx-auto px-6 py-14 md:py-20">
         {/* BLOCO VISUAL */}
-        <div className="relative w-full max-w-xl mx-auto rounded-2xl overflow-hidden shadow-md aspect-[3/4] md:aspect-[4/5] glass-box">
+        <div className="relative w-full max-w-2xl mx-auto rounded-2xl overflow-hidden shadow-md aspect-[3/4] md:aspect-[10/12] glass-box">
           {HERO_FRAMES.map((frame, index) => (
             <img
               key={frame.src}
               src={frame.src || "/placeholder.svg"}
               alt={frame.alt}
-              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${
+              className={`absolute inset-0 w-full h-full object-cover object-[center_20%] transition-opacity duration-700 ${
                 index === activeIndex ? "opacity-100" : "opacity-0"
               }`}
             />
@@ -90,7 +90,7 @@ function SolucaoCard({ image, title, desc, href }) {
     <div className="min-w-[260px] max-w-[260px] md:max-w-none md:min-w-0 bg-white/90 card p-5 rounded-2xl shadow-md border flex flex-col">
       <img src={image || "/placeholder.svg"} alt={title} className="w-full h-40 object-contain rounded-xl mb-4" />
 
-      <h3 className="text-xl font-semibold mb-2">{title}</h3>
+      <h3 className="text-xl font-semibold mb-3">{title}</h3>
 
       <p className="text-[#444] mb-3 leading-relaxed">{desc}</p>
 
