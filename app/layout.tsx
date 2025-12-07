@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     ],
   },
   themeColor: "#FFF6EF",
-    generator: 'v0.app'
+  generator: "v0.app",
 }
 
 export default function RootLayout({
