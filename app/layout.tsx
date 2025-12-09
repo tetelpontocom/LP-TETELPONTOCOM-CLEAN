@@ -9,6 +9,8 @@ export const metadata: Metadata = {
     "A TetelPontocom conecta você a soluções digitais, serviços e curadorias filtradas com propósito, clareza e confiança.",
   icons: {
     icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/favicon.ico",
   },
   openGraph: {
     title: "TetelPontocom — Curadoria Digital com Propósito",

@@ -34,48 +34,53 @@ function HeroCinematica() {
   }, [])
 
   return (
-    <section className="hero-cinematica w-full bg-[#FFF6EF] reveal">
-      <div className="max-w-5xl mx-auto px-6 py-14 md:py-20">
-        {/* BLOCO VISUAL */}
-        <div className="w-full rounded-2xl overflow-hidden shadow-md glass-box">
-          <img
-            src={HERO_FRAMES[activeIndex].src || "/placeholder.svg"}
-            alt={HERO_FRAMES[activeIndex].alt}
-            className="w-full h-auto object-cover"
-          />
-        </div>
+    <div className="mx-auto max-w-7xl px-4">
+      <section className="hero-cinematica w-full bg-[#FFF6EF] reveal">
+        <div className="max-w-5xl mx-auto px-6 py-14 md:py-20">
+          <div className="hero-card glass-box rounded-2xl overflow-hidden shadow-md mx-auto max-w-3xl">
+            {/* IMAGEM */}
+            <div className="w-full">
+              <img
+                src={HERO_FRAMES[activeIndex].src || "/placeholder.svg"}
+                alt={HERO_FRAMES[activeIndex].alt}
+                className="w-full h-auto object-cover"
+              />
+            </div>
 
-        {/* TEXTO + CTA */}
-        <div className="mt-10 text-center">
-          <p className="tetel-sub mb-3">Ecossistema Tetel • Curadoria Digital</p>
+            {/* TEXTO + CTA */}
+            <div className="p-6 md:p-8 text-center">
+              <p className="tetel-sub mb-3 mx-auto w-fit text-center">Ecossistema Tetel • Curadoria Digital</p>
 
-          <h1 className="text-3xl md:text-4xl font-semibold leading-snug tetel-title mb-4">
-            Soluções digitais com propósito,
-            <br /> clareza e confiança.
-          </h1>
+              <h1 className="text-2xl md:text-3xl font-semibold leading-snug tetel-title mb-4">
+                Soluções digitais com propósito,
+                <br />
+                clareza e confiança.
+              </h1>
 
-          <p className="text-base md:text-lg text-black/70 mb-6">
-            O ponto de partida do Ecossistema Tetel: um lugar onde produtos, serviços e projetos passam por filtro
-            humano antes de chegar até você.
-          </p>
+              <p className="text-base text-black/70 mb-6">
+                O ponto de partida do Ecossistema Tetel: um lugar onde produtos, serviços e projetos passam por filtro
+                humano antes de chegar até você.
+              </p>
 
-          <div className="flex flex-wrap justify-center gap-3">
-            <a href="#solucoes" className="btn-glass inline-flex items-center px-6 py-3">
-              Explorar soluções
-            </a>
+              <div className="flex flex-wrap justify-center gap-3">
+                <a href="#solucoes" className="btn-glass px-6 py-3">
+                  Explorar soluções
+                </a>
 
-            <a
-              href="https://wa.me/5582999176900?text=Ol%C3%A1!%20Vim%20da%20TetelPontocom."
-              className="inline-flex items-center px-6 py-3 rounded-full border border-black/10 bg-white/80 text-black"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Falar com TetelPontocom →
-            </a>
+                <a
+                  href="https://wa.me/5582999176900?text=Ol%C3%A1!%20Vim%20da%20TetelPontocom."
+                  className="inline-flex items-center px-6 py-3 rounded-full border border-black/10 bg-white/80"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Falar com TetelPontocom →
+                </a>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
   )
 }
 
@@ -115,6 +120,72 @@ export default function Page() {
               Ver currículo
             </a>
           </div>
+        </div>
+      </section>
+
+      {/* AGENTES DE IA & AUTOMAÇÃO */}
+      <section className="py-16">
+        <div className="mx-auto max-w-3xl text-center px-4">
+          <h2 className="text-2xl md:text-3xl font-semibold mb-4">Agentes de IA & Automação</h2>
+          <p className="text-base md:text-lg text-neutral-600 mb-6">
+            Estruturas inteligentes que automatizam processos, organizam decisões e ampliam capacidade estratégica. Nada
+            genérico — tudo adaptado à sua realidade.
+          </p>
+          <a
+            href="https://wa.me/5582999176900?text=Ol%C3%A1!%20Tenho%20interesse%20em%20Agentes%20de%20IA."
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-full border px-6 py-2 text-sm hover:bg-neutral-100 transition"
+          >
+            Falar diretamente comigo →
+          </a>
+        </div>
+      </section>
+
+      {/* DESENVOLVIMENTO DE WEBSITES */}
+      <section className="py-16 bg-neutral-50">
+        <div className="mx-auto max-w-3xl text-center px-4">
+          <h2 className="text-2xl md:text-3xl font-semibold mb-4">Desenvolvimento de Websites</h2>
+          <p className="text-base md:text-lg text-neutral-600 mb-6">
+            Landing pages, sites institucionais e estruturas digitais construídas com foco em clareza, autoridade e
+            conversão — integradas ao ecossistema TetelPontocom.
+          </p>
+          <a
+            href="https://wa.me/5582999176900?text=Ol%C3%A1!%20Tenho%20um%20projeto%20de%20website."
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-full border px-6 py-2 text-sm hover:bg-neutral-100 transition"
+          >
+            Conversar sobre um projeto →
+          </a>
+        </div>
+      </section>
+
+      {/* TRÁFEGO PAGO E ORGÂNICO */}
+      <section className="py-16">
+        <div className="mx-auto max-w-3xl text-center px-4">
+          <h2 className="text-2xl md:text-3xl font-semibold mb-4">Tráfego Pago e Orgânico</h2>
+
+          <p className="text-sm uppercase tracking-wide text-neutral-500 mb-2">Estratégia integrada • Modelo híbrido</p>
+
+          <p className="text-base md:text-lg text-neutral-600 mb-6">
+            Combinação inteligente entre tráfego pago e orgânico para gerar visibilidade, validação e resultados
+            consistentes — sem depender exclusivamente de anúncios ou alcance aleatório.
+          </p>
+
+          <p className="text-base text-neutral-600 mb-8">
+            O foco não é volume, é eficiência: entender dados, testar rápido, reforçar o que funciona e sustentar
+            crescimento com coerência de jornada.
+          </p>
+
+          <a
+            href="https://wa.me/5582999176900?text=Ol%C3%A1!%20Vim%20da%20TetelPontocom.%20Gostaria%20de%20falar%20sobre%20tr%C3%A1fego."
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-full border px-6 py-2 text-sm hover:bg-neutral-100 transition"
+          >
+            Falar sobre tráfego →
+          </a>
         </div>
       </section>
 
