@@ -104,7 +104,7 @@ export default function Page() {
           </p>
           <div className="flex flex-wrap justify-center gap-8">
             <a
-              href="#"
+              href="https://curriculumpremium.tetel.online"
               className="text-[#3B82F6] font-semibold hover:underline"
               target="_blank"
               rel="noopener noreferrer"
@@ -112,7 +112,7 @@ export default function Page() {
               Ver trajetória
             </a>
             <a
-              href="#"
+              href="https://curriculopremiumtrabalho.tetel.online"
               className="text-[#3B82F6] font-semibold hover:underline"
               target="_blank"
               rel="noopener noreferrer"
@@ -201,7 +201,7 @@ export default function Page() {
                 Estratégia direta para faturar rapidamente com estrutura simples e validada.
               </p>
               <a
-                href="https://facacaixaagora.tetel.online/?ref=tetelpontocom"
+                href="https://facacaixaagora.tetel.online/?origem=tetelpontocom"
                 className="text-[#3B82F6] font-medium inline-flex hover:underline"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -216,7 +216,7 @@ export default function Page() {
                 Inteligência emocional, estratégica e profissional reunida em um só sistema.
               </p>
               <a
-                href="https://minhaia.tetel.online/?ref=tetelpontocom"
+                href="https://minhaia.tetel.online/?origem=tetelpontocom"
                 className="text-[#3B82F6] font-medium inline-flex hover:underline"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -231,7 +231,7 @@ export default function Page() {
                 Estrutura completa + direcionamento estratégico para acelerar resultados.
               </p>
               <a
-                href="https://facacaixaagoraupsell.tetel.online/?ref=tetelpontocom"
+                href="https://facacaixaagoraupsell.tetel.online/?origem=tetelpontocom"
                 className="text-[#3B82F6] font-medium inline-flex hover:underline"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -256,21 +256,21 @@ export default function Page() {
               image="/images/tetel-shopee.jpg"
               title="Curadoria Shopee"
               desc="Seleção dos melhores produtos com critérios de utilidade e custo-benefício."
-              href="https://shopee.tetel.online/?ref=tetelpontocom"
+              href="https://shopee.tetel.online/?origem=tetelpontocom"
             />
 
             <SolucaoCard
               image="/images/tetel-minha-ia.jpg"
               title="Minha IA"
               desc="Inteligência emocional, estratégica e profissional integrada."
-              href="https://minhaia.tetel.online/?ref=tetelpontocom"
+              href="https://minhaia.tetel.online/?origem=tetelpontocom"
             />
 
             <SolucaoCard
               image="/images/tetel-plr-bolos.jpg"
               title="Bolos Caseiros Lucrativos"
               desc="Negócio simples e validado — estrutura completa para começar hoje."
-              href="https://boloscaseiros.tetel.online/?ref=tetelpontocom"
+              href="https://boloscaseiros.tetel.online/?origem=tetelpontocom"
             />
           </div>
 
@@ -280,21 +280,21 @@ export default function Page() {
               image="/images/tetel-shopee.jpg"
               title="Curadoria Shopee"
               desc="Seleção dos melhores produtos com critérios de utilidade e custo-benefício."
-              href="https://shopee.tetel.online/?ref=tetelpontocom"
+              href="https://shopee.tetel.online/?origem=tetelpontocom"
             />
 
             <SolucaoCard
               image="/images/tetel-minha-ia.jpg"
               title="Minha IA"
               desc="Inteligência emocional, estratégica e profissional integrada."
-              href="https://minhaia.tetel.online/?ref=tetelpontocom"
+              href="https://minhaia.tetel.online/?origem=tetelpontocom"
             />
 
             <SolucaoCard
               image="/images/tetel-plr-bolos.jpg"
               title="Bolos Caseiros Lucrativos"
               desc="Negócio simples e validado — estrutura completa para começar hoje."
-              href="https://boloscaseiros.tetel.online/?ref=tetelpontocom"
+              href="https://boloscaseiros.tetel.online/?origem=tetelpontocom"
             />
           </div>
         </div>
