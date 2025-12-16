@@ -253,10 +253,10 @@ export default function Page() {
           {/* MOBILE — CARROSSEL */}
           <div className="md:hidden w-full overflow-x-auto no-scrollbar flex gap-5 pb-4">
             <SolucaoCard
-              image="/images/tetel-shopee.jpg"
-              title="Curadoria Shopee"
-              desc="Seleção dos melhores produtos com critérios de utilidade e custo-benefício."
-              href="https://shopee.tetel.online/?origem=tetelpontocom"
+              image="/images/tetel-curadoria-ofertas.jpg"
+              title="Curadoria de Ofertas Selecionadas"
+              desc="Seleção criteriosa de produtos e oportunidades com foco em utilidade real, custo-benefício e confiança."
+              href="https://tetelpontocomspee.tetel.online/?origem=tetelpontocom"
             />
 
             <SolucaoCard
@@ -277,10 +277,10 @@ export default function Page() {
           {/* DESKTOP — GRID PREMIUM */}
           <div className="hidden md:grid md:grid-cols-3 gap-8">
             <SolucaoCard
-              image="/images/tetel-shopee.jpg"
-              title="Curadoria Shopee"
-              desc="Seleção dos melhores produtos com critérios de utilidade e custo-benefício."
-              href="https://shopee.tetel.online/?origem=tetelpontocom"
+              image="/images/tetel-curadoria-ofertas.jpg"
+              title="Curadoria de Ofertas Selecionadas"
+              desc="Seleção criteriosa de produtos e oportunidades com foco em utilidade real, custo-benefício e confiança."
+              href="https://tetelpontocomspee.tetel.online/?origem=tetelpontocom"
             />
 
             <SolucaoCard
