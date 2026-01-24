@@ -214,7 +214,7 @@ header .tetel-logo {
 }
 
 /* ================================================================
-   TAILWIND & DESIGN TOKENS
+   TAILWIND & DESIGN TOKENS (SEGUE ABAIXO)
    ================================================================ */
 
 @import "tailwindcss";
@@ -342,9 +342,10 @@ header .tetel-logo {
 }
 
 /* ================================================================
-   FIX DEFINITIVO — Centralização do bloco HERO no desktop
+   FIM — VERSÃO PREMIUM CINEMÁTICA TTEL
    ================================================================ */
 
+/* FIX DEFINITIVO — Centralização do bloco HERO no desktop */
 .hero-cinematica > div {
   margin-left: auto;
   margin-right: auto;
@@ -354,163 +355,5 @@ header .tetel-logo {
   .hero-cinematica {
     display: flex;
     justify-content: center;
-  }
-}
-
-/* esconder scrollbar do carrossel mobile (mantém scroll) */
-.no-scrollbar::-webkit-scrollbar {
-  display: none;
-}
-.no-scrollbar {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-/* ================================================================
-   FOOTER INSTITUCIONAL — TetelPontocom
-   ================================================================ */
-
-.tetel-promise {
-  font-size: 0.95rem;
-  color: rgba(0, 0, 0, 0.55);
-}
-
-.tetel-footer {
-  width: 100%;
-  background: #0a0a0a;
-  color: rgba(255, 255, 255, 0.9);
-  margin-top: 2.5rem;
-}
-
-.tetel-footer__inner {
-  max-width: 80rem;
-  margin: 0 auto;
-  padding: 2.5rem 1.25rem;
-  display: grid;
-  gap: 1.5rem;
-}
-
-.tetel-footer__brand {
-  display: flex;
-  gap: 1rem;
-  align-items: flex-start;
-}
-
-.tetel-footer__logo {
-  width: 44px;
-  height: 44px;
-  border-radius: 999px;
-}
-
-.tetel-footer__title {
-  font-weight: 600;
-  letter-spacing: -0.2px;
-  margin-bottom: 0.25rem;
-}
-
-.tetel-footer__desc {
-  color: rgba(255, 255, 255, 0.72);
-  line-height: 1.5;
-  max-width: 56ch;
-}
-
-.tetel-footer__links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem 1rem;
-}
-
-.tetel-footer__links a {
-  color: rgba(255, 255, 255, 0.85);
-  text-decoration: none;
-}
-
-.tetel-footer__links a:hover {
-  text-decoration: underline;
-}
-
-.tetel-footer__cta {
-  display: grid;
-  gap: 0.75rem;
-}
-
-.tetel-footer__promise {
-  color: rgba(255, 255, 255, 0.7);
-  line-height: 1.5;
-}
-
-.tetel-footer__whats {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: fit-content;
-  padding: 0.75rem 1.2rem;
-  border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  background: rgba(255, 255, 255, 0.08);
-  color: rgba(255, 255, 255, 0.92);
-  text-decoration: none;
-  transition: transform 0.2s ease, background 0.2s ease;
-}
-
-.tetel-footer__whats:hover {
-  background: rgba(255, 255, 255, 0.12);
-  transform: translateY(-1px);
-}
-
-.tetel-footer__bottom {
-  border-top: 1px solid rgba(255, 255, 255, 0.12);
-  padding: 1rem 1.25rem;
-  max-width: 80rem;
-  margin: 0 auto;
-  color: rgba(255, 255, 255, 0.6);
-  font-size: 0.9rem;
-}
-
-@media (min-width: 768px) {
-  .tetel-footer__inner {
-    grid-template-columns: 1.2fr 0.8fr 1fr;
-    align-items: start;
-  }
-}
-
-
-/* ================================================================
-   MOBILE CAROUSEL — Cinematic edge fade (TetelPontocom)
-   - Purpose: indicate horizontal scroll on mobile with finesse
-   - Safe Mode: pure CSS, no JS, no SSR assumptions
-   ================================================================ */
-
-@media (max-width: 767px) {
-  .tetel-carousel-fade {
-    position: relative;
-  }
-
-  .tetel-carousel-fade::before,
-  .tetel-carousel-fade::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 40px;
-    pointer-events: none;
-    z-index: 10;
-  }
-
-  .tetel-carousel-fade::before {
-    left: 0;
-    background: linear-gradient(to right, #fff6ef 0%, rgba(255, 246, 239, 0) 100%);
-  }
-
-  .tetel-carousel-fade::after {
-    right: 0;
-    background: linear-gradient(to left, #fff6ef 0%, rgba(255, 246, 239, 0) 100%);
-  }
-
-  /* Optional: a tiny padding so the first/last card breathe */
-  .tetel-carousel-track {
-    scroll-padding-left: 16px;
-    scroll-padding-right: 16px;
-    -webkit-overflow-scrolling: touch;
   }
 }
