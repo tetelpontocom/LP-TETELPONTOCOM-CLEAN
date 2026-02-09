@@ -3,55 +3,6 @@
 const WHATSAPP_OPEN =
   "https://wa.me/5582999176900?text=Oi%2C%20vim%20da%20TetelPontocom.%20Quero%20te%20dizer%20meu%20ponto%20de%20partida%20e%20entender%20qual%20caminho%20faz%20sentido%20pra%20mim."
 
-type FbqFn = (...args: any[]) => void
-
-function getFbq(): FbqFn | null {
-  if (typeof window === "undefined") return null
-  const w = window as any
-  return typeof w.fbq === "function" ? (w.fbq as FbqFn) : null
-}
-
-/**
- * Pixel Universal — Eventos base TetelPontocom
- * - WhatsApp: Contact
- * - Explorar/Soluções/Links: ViewContent
- * - Auditoria leve: trackCustom("tetel_click") (opcional)
- */
-function trackMeta(eventName: "Contact" | "ViewContent", params: Record<string, any>) {
-  const fbq = getFbq()
-  if (!fbq) return
-  try {
-    fbq("track", eventName, params)
-  } catch {
-    // silencioso por segurança (não quebra UX)
-  }
-}
-
-function trackCustom(name: string, params: Record<string, any>) {
-  const fbq = getFbq()
-  if (!fbq) return
-  try {
-    fbq("trackCustom", name, params)
-  } catch {
-    // silencioso
-  }
-}
-
-function handleTetelClick(e: React.MouseEvent<HTMLElement>, extra?: Record<string, any>) {
-  const el = e.currentTarget as HTMLElement
-  const event = el.getAttribute("data-tetel-event") || "tetel_click"
-  const context = el.getAttribute("data-tetel-context") || "unknown"
-  const target = el.getAttribute("data-tetel-target") || "unknown"
-  const placement = el.getAttribute("data-tetel-placement") || ""
-
-  trackCustom(event, {
-    tetel_context: context,
-    tetel_target: target,
-    tetel_placement: placement,
-    ...extra,
-  })
-}
-
 function HeroEntrada() {
   return (
     <div className="mx-auto max-w-7xl px-4">
@@ -69,6 +20,10 @@ function HeroEntrada() {
                     alt="TetelPontocom — orientacao pratica para decisoes no mundo digital"
                     className="w-full h-full object-cover object-[50%_16%] md:object-[50%_18%]"
                   />
+
+                  {/* No mobile, suaviza a base para nao virar "mancha" quando o texto desce */}
+
+                  {/* Overlay MUITO leve para "premium" sem escurecer (reduz sensacao de sombra) */}
                 </div>
               </div>
 
@@ -90,7 +45,7 @@ function HeroEntrada() {
                   <span className="font-semibold text-black/70">Por Denivaldo (Tetel)</span>
                 </p>
 
-                {/* CTAs alinhados e "limpos" */}
+                {/* CTAs alinhados e "limpos" (sem quebra estranha no mobile) */}
                 <div className="flex flex-col sm:flex-row gap-3 sm:items-center">
                   <a
                     href="#solucoes"
@@ -98,16 +53,6 @@ function HeroEntrada() {
                     data-tetel-event="tetel_link_click"
                     data-tetel-context="hero"
                     data-tetel-target="explorar_solucoes"
-                    onClick={(e) => {
-                      // Auditoria + Meta
-                      handleTetelClick(e)
-                      trackMeta("ViewContent", {
-                        content_name: "Explorar solucoes",
-                        content_category: "LP TetelPontocom",
-                        tetel_context: "hero",
-                        tetel_target: "explorar_solucoes",
-                      })
-                    }}
                   >
                     Explorar solucoes
                   </a>
@@ -120,15 +65,6 @@ function HeroEntrada() {
                     data-tetel-event="tetel_whatsapp_click"
                     data-tetel-context="hero"
                     data-tetel-target="whatsapp"
-                    onClick={(e) => {
-                      handleTetelClick(e, { destination: "whatsapp" })
-                      trackMeta("Contact", {
-                        content_name: "WhatsApp (Hero)",
-                        content_category: "LP TetelPontocom",
-                        tetel_context: "hero",
-                        tetel_target: "whatsapp",
-                      })
-                    }}
                   >
                     {"Falar no WhatsApp (orientação) →"}
                   </a>
@@ -149,7 +85,7 @@ function HeroEntrada() {
 export default function Page() {
   return (
     <div className="w-full flex flex-col items-center text-[#0A0A0A]">
-      {/* HERO NOVA */}
+      {/* HERO NOVA (sem cinematica) */}
       <HeroEntrada />
 
       <section className="w-full bg-[#FFF6EF] py-16 reveal">
@@ -167,20 +103,10 @@ export default function Page() {
               rel="noopener noreferrer"
               data-tetel-event="tetel_link_click"
               data-tetel-context="quem_somos"
-              data-tetel-target="trajetoria"
-              onClick={(e) => {
-                handleTetelClick(e, { href: "https://curriculumpremium.tetel.online" })
-                trackMeta("ViewContent", {
-                  content_name: "Ver trajetoria",
-                  content_category: "Quem somos",
-                  tetel_context: "quem_somos",
-                  tetel_target: "trajetoria",
-                })
-              }}
+              data-tetel-target="trajetória"
             >
               Ver trajetória
             </a>
-
             <a
               href="https://curriculopremiumtrabalho.tetel.online"
               className="text-[#3B82F6] font-semibold hover:underline"
@@ -189,15 +115,6 @@ export default function Page() {
               data-tetel-event="tetel_link_click"
               data-tetel-context="quem_somos"
               data-tetel-target="curriculo"
-              onClick={(e) => {
-                handleTetelClick(e, { href: "https://curriculopremiumtrabalho.tetel.online" })
-                trackMeta("ViewContent", {
-                  content_name: "Ver curriculo",
-                  content_category: "Quem somos",
-                  tetel_context: "quem_somos",
-                  tetel_target: "curriculo",
-                })
-              }}
             >
               Ver curriculo
             </a>
@@ -220,15 +137,6 @@ export default function Page() {
             data-tetel-event="tetel_whatsapp_click"
             data-tetel-context="agentes_ia"
             data-tetel-target="whatsapp"
-            onClick={(e) => {
-              handleTetelClick(e, { destination: "whatsapp" })
-              trackMeta("Contact", {
-                content_name: "WhatsApp (Agentes IA)",
-                content_category: "LP TetelPontocom",
-                tetel_context: "agentes_ia",
-                tetel_target: "whatsapp",
-              })
-            }}
           >
             {"Falar diretamente comigo →"}
           </a>
@@ -250,15 +158,6 @@ export default function Page() {
             data-tetel-event="tetel_whatsapp_click"
             data-tetel-context="websites"
             data-tetel-target="whatsapp"
-            onClick={(e) => {
-              handleTetelClick(e, { destination: "whatsapp" })
-              trackMeta("Contact", {
-                content_name: "WhatsApp (Websites)",
-                content_category: "LP TetelPontocom",
-                tetel_context: "websites",
-                tetel_target: "whatsapp",
-              })
-            }}
           >
             {"Conversar sobre um projeto →"}
           </a>
@@ -285,15 +184,6 @@ export default function Page() {
             data-tetel-event="tetel_whatsapp_click"
             data-tetel-context="trafego"
             data-tetel-target="whatsapp"
-            onClick={(e) => {
-              handleTetelClick(e, { destination: "whatsapp" })
-              trackMeta("Contact", {
-                content_name: "WhatsApp (Trafego)",
-                content_category: "LP TetelPontocom",
-                tetel_context: "trafego",
-                tetel_target: "whatsapp",
-              })
-            }}
           >
             {"Falar sobre trafego →"}
           </a>
@@ -316,15 +206,6 @@ export default function Page() {
                 data-tetel-event="tetel_solution_click"
                 data-tetel-context="solucoes_principais"
                 data-tetel-target="faca_caixa_agora"
-                onClick={(e) => {
-                  handleTetelClick(e, { href: "https://facacaixaagora.tetel.online/?origem=tetelpontocom" })
-                  trackMeta("ViewContent", {
-                    content_name: "Faca Caixa Agora",
-                    content_category: "Solucoes Principais",
-                    tetel_context: "solucoes_principais",
-                    tetel_target: "faca_caixa_agora",
-                  })
-                }}
               >
                 {"Entrar →"}
               </a>
@@ -342,15 +223,6 @@ export default function Page() {
                 data-tetel-context="page"
                 data-tetel-placement="solucoes_principais"
                 data-tetel-target="minha_ia_sales_page"
-                onClick={(e) => {
-                  handleTetelClick(e, { href: "https://minhaia.tetel.online/?origem=tetelpontocom" })
-                  trackMeta("ViewContent", {
-                    content_name: "Minha IA",
-                    content_category: "Solucoes Principais",
-                    tetel_context: "solucoes_principais",
-                    tetel_target: "minha_ia_sales_page",
-                  })
-                }}
               >
                 {"Conhecer Minha IA →"}
               </a>
@@ -367,15 +239,6 @@ export default function Page() {
                 data-tetel-event="tetel_solution_click"
                 data-tetel-context="solucoes_principais"
                 data-tetel-target="starter_tetel"
-                onClick={(e) => {
-                  handleTetelClick(e, { href: "https://facacaixaagoraupsell.tetel.online/?origem=tetelpontocom" })
-                  trackMeta("ViewContent", {
-                    content_name: "Starter Tetel",
-                    content_category: "Solucoes Principais",
-                    tetel_context: "solucoes_principais",
-                    tetel_target: "starter_tetel",
-                  })
-                }}
               >
                 {"Entrar →"}
               </a>
@@ -460,9 +323,7 @@ export default function Page() {
         <div className="max-w-5xl mx-auto px-6 text-center">
           <h2 className="text-3xl md:text-4xl font-semibold mb-6">Fale com TetelPontocom</h2>
           <p className="text-base md:text-lg text-[#666] mb-4">{"Projetos, duvidas e orientacoes — fale diretamente comigo."}</p>
-          <p className="tetel-promise mb-8">
-            Atendimento humano e cuidadoso. Posso nao responder na hora, mas respondo com atencao.
-          </p>
+          <p className="tetel-promise mb-8">Atendimento humano e cuidadoso. Posso nao responder na hora, mas respondo com atencao.</p>
 
           <a
             href={WHATSAPP_OPEN}
@@ -472,15 +333,6 @@ export default function Page() {
             data-tetel-event="tetel_whatsapp_click"
             data-tetel-context="final"
             data-tetel-target="whatsapp"
-            onClick={(e) => {
-              handleTetelClick(e, { destination: "whatsapp" })
-              trackMeta("Contact", {
-                content_name: "WhatsApp (Final)",
-                content_category: "LP TetelPontocom",
-                tetel_context: "final",
-                tetel_target: "whatsapp",
-              })
-            }}
           >
             {"Falar no WhatsApp (orientacao) →"}
           </a>
@@ -526,16 +378,6 @@ function SolucaoCard({
         data-tetel-context={context}
         data-tetel-target={target}
         data-tetel-placement={placement || ""}
-        onClick={(e) => {
-          handleTetelClick(e, { href })
-          trackMeta("ViewContent", {
-            content_name: title,
-            content_category: "Solucoes Ecossistema",
-            tetel_context: context,
-            tetel_target: target,
-            tetel_placement: placement || "",
-          })
-        }}
       >
         {ctaLabel}
       </a>
