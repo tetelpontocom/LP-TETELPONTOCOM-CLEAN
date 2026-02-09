@@ -1,516 +1,146 @@
-/* ================================================================
-   RESET + BASE PREMIUM TTEL
-   ================================================================ */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html,
 body {
-  max-width: 100%;
-  overflow-x: hidden;
-  scroll-behavior: smooth;
-  background: #fff6ef;
-  color: #0a0a0a;
-  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
-    sans-serif;
-
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-/* ================================================================
-   ESTÉTICA CINEMÁTICA PREMIUM
-   ================================================================ */
-
-:root {
-  --ttel-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
-  --ttel-shadow-soft: 0 8px 22px rgba(0, 0, 0, 0.06);
-  --ttel-glass-bg: rgba(255, 255, 255, 0.55);
-  --ttel-glass-border: rgba(255, 255, 255, 0.35);
-}
-
-/* ================================================================
-   SEÇÕES & TITULAÇÕES
-   ================================================================ */
-
-section {
-  width: 100%;
-  position: relative;
-}
-
-h1,
-h2,
-h3 {
-  font-weight: 600;
-  line-height: 1.25;
-  color: #0a0a0a;
-}
-
-/* ================================================================
-   HERO CINEMÁTICA PREMIUM (Glass + Depth)
-   ================================================================ */
-
-.hero-cinematica {
-  padding-top: 4rem;
-  padding-bottom: 2rem;
-  background: linear-gradient(180deg, #fff6ef 0%, #fff6ef 60%, #fdf3ea 100%);
-}
-
-.hero-cinematica .hero-card {
-  padding: 0;
-}
-
-.hero-cinematica img {
-  display: block;
-  transition: opacity 1s ease-in-out !important;
-  object-position: center top;
-}
-
-/* vidro cinematográfico */
-.hero-cinematica .glass-box {
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  background: var(--ttel-glass-bg);
-  border: 1px solid var(--ttel-glass-border);
-  box-shadow: var(--ttel-shadow);
-  border-radius: 1.5rem;
-}
-
-/* ================================================================
-   GLASS BUTTONS (CTAs premium)
-   ================================================================ */
-
-.btn-glass {
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  background: rgba(255, 255, 255, 0.55);
-  border: 1px solid rgba(255, 255, 255, 0.35);
-  padding: 0.75rem 1.6rem;
-  border-radius: 999px;
-  font-weight: 500;
-  transition: all 0.25s ease;
-}
-
-.btn-glass:hover {
-  background: rgba(255, 255, 255, 0.7);
-  transform: translateY(-2px);
-}
-
-/* ================================================================
-   CARDS — VERSÃO PREMIUM
-   ================================================================ */
-
-.card {
-  background: #ffffff;
-  border-radius: 1.25rem;
-  padding: 1.5rem;
-  border: 1px solid rgba(0, 0, 0, 0.05);
-  transition: all 0.3s ease;
-  box-shadow: var(--ttel-shadow-soft);
-}
-
-.card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--ttel-shadow);
-}
-
-/* ================================================================
-   SCROLL REVEAL PREMIUM (Fade + Lift)
-   ================================================================ */
-
-.reveal {
-  opacity: 0;
-  transform: translateY(35px) scale(0.97);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-}
-
-/* ================================================================
-   TÍTULOS SUAVES TTEL
-   ================================================================ */
-
-.tetel-title {
-  font-weight: 600;
-  letter-spacing: -0.3px;
-  color: #0a0a0a;
-}
-
-.tetel-sub {
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.22em;
-  color: rgba(0, 0, 0, 0.55);
-}
-
-/* ================================================================
-   GRID E LAYOUT PREMIUM
-   ================================================================ */
-
-img {
-  display: block;
-  max-width: 100%;
-}
-
-.grid {
-  width: 100%;
-}
-
-/* Corrige espaços indesejados do V0 */
-section > div {
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* ================================================================
-   CORREÇÃO DA DOBRA HERO → PRIMEIRA SEÇÃO
-   ================================================================ */
-
-#solucoes {
-  margin-top: 0 !important;
-  padding-top: 1rem !important;
-}
-
-/* ================================================================
-   MOBILE — HERO MAIS ALTA E ELEGANTE
-   ================================================================ */
-
-@media (max-width: 640px) {
-  .hero-cinematica {
-    padding-top: 3rem !important;
-    padding-bottom: 2rem !important;
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
   }
 }
 
-/* ================================================================
-   BARRA INSTITUCIONAL
-   ================================================================ */
-
-header .tetel-logo {
-  object-fit: cover;
-  border-radius: 999px;
-}
-
-/* ================================================================
-   BOTÕES UNIVERSAIS TTEL
-   ================================================================ */
-
-.btn-tetel {
-  border-radius: 999px;
-  font-weight: 500;
-  transition: all 0.25s ease;
-}
-
-.btn-tetel:hover {
-  background: #1a1a1a;
-  color: white;
-}
-
-/* ================================================================
-   TAILWIND & DESIGN TOKENS
-   ================================================================ */
-
-@import "tailwindcss";
-@import "tw-animate-css";
-
-@custom-variant dark (&:is(.dark *));
-
-:root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --radius: 0.625rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
-}
-
-.dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.145 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.145 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.985 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.396 0.141 25.723);
-  --destructive-foreground: oklch(0.637 0.237 25.331);
-  --border: oklch(0.269 0 0);
-  --input: oklch(0.269 0 0);
-  --ring: oklch(0.439 0 0);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(0.269 0 0);
-  --sidebar-ring: oklch(0.439 0 0);
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
-  --color-popover: var(--popover);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-destructive: var(--destructive);
-  --color-destructive-foreground: var(--destructive-foreground);
-  --color-border: var(--border);
-  --color-input: var(--input);
-  --color-ring: var(--ring);
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-  --color-sidebar: var(--sidebar);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-ring: var(--sidebar-ring);
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+    --primary: 0 0% 9%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 9%;
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 0 0% 3.9%;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.5rem;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+  .dark {
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
 }
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    @apply border-border;
   }
   body {
     @apply bg-background text-foreground;
   }
 }
 
-/* ================================================================
-   FIX DEFINITIVO — Centralização do bloco HERO no desktop
-   ================================================================ */
+/* ── TetelPontocom custom classes ── */
 
-.hero-cinematica > div {
-  margin-left: auto;
-  margin-right: auto;
+.tetel-sub {
+  @apply text-xs uppercase tracking-widest text-black/50 font-medium;
 }
 
-@media (min-width: 1024px) {
-  .hero-cinematica {
-    display: flex;
-    justify-content: center;
+.tetel-title {
+  @apply text-balance;
+}
+
+.tetel-promise {
+  @apply text-xs text-black/40 italic;
+}
+
+.btn-glass {
+  @apply inline-flex items-center justify-center rounded-full bg-[#0A0A0A] text-white font-medium hover:bg-[#1a1a1a] transition;
+}
+
+.card {
+  @apply transition-shadow hover:shadow-lg;
+}
+
+.reveal {
+  animation: revealUp 0.6s ease-out both;
+}
+
+@keyframes revealUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-/* esconder scrollbar do carrossel mobile (mantém scroll) */
+/* Carousel fade edges (mobile) */
+.tetel-carousel-fade {
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 4%, black 96%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0%, black 4%, black 96%, transparent 100%);
+}
+
+/* Hide scrollbar for carousels */
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
 .no-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
-}
-
-/* ================================================================
-   FOOTER INSTITUCIONAL — TetelPontocom
-   ================================================================ */
-
-.tetel-promise {
-  font-size: 0.95rem;
-  color: rgba(0, 0, 0, 0.55);
-}
-
-.tetel-footer {
-  width: 100%;
-  background: #0a0a0a;
-  color: rgba(255, 255, 255, 0.9);
-  margin-top: 2.5rem;
-}
-
-.tetel-footer__inner {
-  max-width: 80rem;
-  margin: 0 auto;
-  padding: 2.5rem 1.25rem;
-  display: grid;
-  gap: 1.5rem;
-}
-
-.tetel-footer__brand {
-  display: flex;
-  gap: 1rem;
-  align-items: flex-start;
-}
-
-.tetel-footer__logo {
-  width: 44px;
-  height: 44px;
-  border-radius: 999px;
-}
-
-.tetel-footer__title {
-  font-weight: 600;
-  letter-spacing: -0.2px;
-  margin-bottom: 0.25rem;
-}
-
-.tetel-footer__desc {
-  color: rgba(255, 255, 255, 0.72);
-  line-height: 1.5;
-  max-width: 56ch;
-}
-
-.tetel-footer__links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem 1rem;
-}
-
-.tetel-footer__links a {
-  color: rgba(255, 255, 255, 0.85);
-  text-decoration: none;
-}
-
-.tetel-footer__links a:hover {
-  text-decoration: underline;
-}
-
-.tetel-footer__cta {
-  display: grid;
-  gap: 0.75rem;
-}
-
-.tetel-footer__promise {
-  color: rgba(255, 255, 255, 0.7);
-  line-height: 1.5;
-}
-
-.tetel-footer__whats {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: fit-content;
-  padding: 0.75rem 1.2rem;
-  border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  background: rgba(255, 255, 255, 0.08);
-  color: rgba(255, 255, 255, 0.92);
-  text-decoration: none;
-  transition: transform 0.2s ease, background 0.2s ease;
-}
-
-.tetel-footer__whats:hover {
-  background: rgba(255, 255, 255, 0.12);
-  transform: translateY(-1px);
-}
-
-.tetel-footer__bottom {
-  border-top: 1px solid rgba(255, 255, 255, 0.12);
-  padding: 1rem 1.25rem;
-  max-width: 80rem;
-  margin: 0 auto;
-  color: rgba(255, 255, 255, 0.6);
-  font-size: 0.9rem;
-}
-
-@media (min-width: 768px) {
-  .tetel-footer__inner {
-    grid-template-columns: 1.2fr 0.8fr 1fr;
-    align-items: start;
-  }
-}
-
-
-/* ================================================================
-   MOBILE CAROUSEL — Cinematic edge fade (TetelPontocom)
-   - Purpose: indicate horizontal scroll on mobile with finesse
-   - Safe Mode: pure CSS, no JS, no SSR assumptions
-   ================================================================ */
-
-@media (max-width: 767px) {
-  .tetel-carousel-fade {
-    position: relative;
-  }
-
-  .tetel-carousel-fade::before,
-  .tetel-carousel-fade::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 40px;
-    pointer-events: none;
-    z-index: 10;
-  }
-
-  .tetel-carousel-fade::before {
-    left: 0;
-    background: linear-gradient(to right, #fff6ef 0%, rgba(255, 246, 239, 0) 100%);
-  }
-
-  .tetel-carousel-fade::after {
-    right: 0;
-    background: linear-gradient(to left, #fff6ef 0%, rgba(255, 246, 239, 0) 100%);
-  }
-
-  /* Optional: a tiny padding so the first/last card breathe */
-  .tetel-carousel-track {
-    scroll-padding-left: 16px;
-    scroll-padding-right: 16px;
-    -webkit-overflow-scrolling: touch;
-  }
 }
