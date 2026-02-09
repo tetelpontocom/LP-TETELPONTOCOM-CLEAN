@@ -38,7 +38,7 @@ function HeroEntrada() {
                 </h1>
 
                 <p className="text-base md:text-lg text-black/70 leading-relaxed mb-6 max-w-[54ch]">
-                  Um ecossistema de soluções em tecnologia, IA e estratégia — com orientação humana e direção prática.
+                  Um ecossistema de solucoes em tecnologia, IA e estrategia — com orientacao humana e direcao pratica.
                 </p>
 
                 <p className="text-sm text-black/60 mb-7">
@@ -66,12 +66,12 @@ function HeroEntrada() {
                     data-tetel-context="hero"
                     data-tetel-target="whatsapp"
                   >
-                    {"Falar no WhatsApp (orientação) →"}
+                    {"Falar no WhatsApp (orientacao) →"}
                   </a>
                 </div>
 
                 <p className="tetel-promise mt-5">
-                  Atendimento humano e cuidadoso. Posso não responder na hora, mas respondo com atenção.
+                  Atendimento humano e cuidadoso. Posso nao responder na hora, mas respondo com atencao.
                 </p>
               </div>
             </div>
@@ -92,8 +92,8 @@ export default function Page() {
         <div className="max-w-5xl mx-auto px-6 text-center">
           <h2 className="text-3xl md:text-4xl font-semibold mb-6 text-center">Quem e TetelPontocom</h2>
           <p className="text-base md:text-lg text-[#666] leading-relaxed mb-8 text-center">
-            A TetelPontocom organiza soluções digitais, produtos e projetos com base em critério, experiência e coerência de
-            jornada. Nada chega até você sem passar por curadoria humana, visão estratégica e responsabilidade real.
+            A TetelPontocom organiza solucoes digitais, produtos e projetos com base em criterio, experiencia e coerencia de
+            jornada. Nada chega ate voce sem passar por curadoria humana, visao estrategica e responsabilidade real.
           </p>
           <div className="flex flex-wrap justify-center gap-8">
             <a
@@ -103,9 +103,9 @@ export default function Page() {
               rel="noopener noreferrer"
               data-tetel-event="tetel_link_click"
               data-tetel-context="quem_somos"
-              data-tetel-target="trajetória"
+              data-tetel-target="trajetoria"
             >
-              Ver trajetória
+              Ver trajetoria
             </a>
             <a
               href="https://curriculopremiumtrabalho.tetel.online"
@@ -126,7 +126,7 @@ export default function Page() {
         <div className="mx-auto max-w-3xl text-center px-4">
           <h2 className="text-2xl md:text-3xl font-semibold mb-4">{"Agentes de IA & Automacao"}</h2>
           <p className="text-base md:text-lg text-neutral-600 mb-6">
-            Estruturas inteligentes que automatizam processos, organizam decisões e ampliam capacidade estratégica. Nada genérico
+            Estruturas inteligentes que automatizam processos, organizam decisoes e ampliam capacidade estrategica. Nada generico
             — tudo adaptado a sua realidade.
           </p>
           <a
@@ -147,7 +147,7 @@ export default function Page() {
         <div className="mx-auto max-w-3xl text-center px-4">
           <h2 className="text-2xl md:text-3xl font-semibold mb-4">Desenvolvimento de Websites</h2>
           <p className="text-base md:text-lg text-neutral-600 mb-6">
-            Landing pages, sites institucionais e estruturas digitais construidas com foco em clareza, autoridade e conversão —
+            Landing pages, sites institucionais e estruturas digitais construidas com foco em clareza, autoridade e conversao —
             integradas ao ecossistema TetelPontocom.
           </p>
           <a
@@ -166,15 +166,15 @@ export default function Page() {
 
       <section className="py-16">
         <div className="mx-auto max-w-3xl text-center px-4">
-          <h2 className="text-2xl md:text-3xl font-semibold mb-4">Tráfego Pago e Orgânico</h2>
-          <p className="text-sm uppercase tracking-wide text-neutral-500 mb-2">{"Estratégia integrada • Modelo hibrido"}</p>
+          <h2 className="text-2xl md:text-3xl font-semibold mb-4">Trafego Pago e Organico</h2>
+          <p className="text-sm uppercase tracking-wide text-neutral-500 mb-2">{"Estrategia integrada • Modelo hibrido"}</p>
           <p className="text-base md:text-lg text-neutral-600 mb-6">
-            Combinação inteligente entre tráfego pago e orgânico para gerar visibilidade, validação e resultados consistentes —
-            sem depender exclusivamente de anúncios ou alcance aleatório.
+            Combinacao inteligente entre trafego pago e organico para gerar visibilidade, validacao e resultados consistentes —
+            sem depender exclusivamente de anuncios ou alcance aleatorio.
           </p>
           <p className="text-base text-neutral-600 mb-8">
-            O foco não é volume, é eficiência: entender dados, testar rápido, reforçar o que funciona e sustentar crescimento com
-            coerência de jornada.
+            O foco nao e volume, e eficiencia: entender dados, testar rapido, reforcar o que funciona e sustentar crescimento com
+            coerencia de jornada.
           </p>
           <a
             href={WHATSAPP_OPEN}
@@ -192,12 +192,12 @@ export default function Page() {
 
       <section id="solucoes" className="w-full py-16 reveal">
         <div className="max-w-5xl mx-auto px-6">
-          <h2 className="text-3xl md:text-4xl font-semibold mb-12 text-center">Soluções Principais</h2>
+          <h2 className="text-3xl md:text-4xl font-semibold mb-12 text-center">Solucoes Principais</h2>
 
           <div className="grid md:grid-cols-3 gap-6">
             <div className="card p-6 rounded-xl shadow-sm border bg-white">
               <h3 className="text-xl font-semibold mb-3">Faca Caixa Agora</h3>
-              <p className="text-[#666] mb-4">Estratégia direta para faturar rapidamente com estrutura simples e validada.</p>
+              <p className="text-[#666] mb-4">Estrategia direta para faturar rapidamente com estrutura simples e validada.</p>
               <a
                 href="https://facacaixaagora.tetel.online/?origem=tetelpontocom"
                 className="text-[#3B82F6] font-medium inline-flex hover:underline"
@@ -213,7 +213,7 @@ export default function Page() {
 
             <div className="card p-6 rounded-xl shadow-sm border bg-white">
               <h3 className="text-xl font-semibold mb-3">Minha IA</h3>
-              <p className="text-[#666] mb-4">Inteligência emocional, estratégica e profissional reunida em um só sistema.</p>
+              <p className="text-[#666] mb-4">Inteligencia emocional, estrategica e profissional reunida em um so sistema.</p>
               <a
                 href="https://minhaia.tetel.online/?origem=tetelpontocom"
                 className="text-[#3B82F6] font-medium inline-flex hover:underline"
@@ -230,7 +230,7 @@ export default function Page() {
 
             <div className="card p-6 rounded-xl shadow-sm border bg-white">
               <h3 className="text-xl font-semibold mb-3">Starter Tetel</h3>
-              <p className="text-[#666] mb-4">Estrutura completa + direcionamento estratégico para acelerar resultados.</p>
+              <p className="text-[#666] mb-4">Estrutura completa + direcionamento estrategico para acelerar resultados.</p>
               <a
                 href="https://facacaixaagoraupsell.tetel.online/?origem=tetelpontocom"
                 className="text-[#3B82F6] font-medium inline-flex hover:underline"
@@ -249,14 +249,14 @@ export default function Page() {
 
       <section className="w-full py-16 reveal">
         <div className="max-w-5xl mx-auto px-6">
-          <h2 className="text-3xl md:text-4xl font-semibold mb-12 text-center">Soluções do Ecossistema</h2>
+          <h2 className="text-3xl md:text-4xl font-semibold mb-12 text-center">Solucoes do Ecossistema</h2>
 
           <div className="md:hidden w-full tetel-carousel-fade">
             <div className="tetel-carousel-track no-scrollbar grid grid-flow-col auto-cols-[85%] gap-5 overflow-x-auto pb-4 snap-x snap-mandatory px-4 -mx-4">
               <SolucaoCard
-                image="/images/tetel-curadoria-ofertas.jpg"
+                image="/images/tetel-shopee.jpg"
                 title="Curadoria de Ofertas Selecionadas"
-                desc="Seleção criteriosa de produtos e oportunidades com foco em utilidade real, custo-benefício e confiança."
+                desc="Selecao criteriosa de produtos e oportunidades com foco em utilidade real, custo-beneficio e confianca."
                 href="https://tetelpontocomspee.tetel.online/?origem=tetelpontocom"
                 event="tetel_solution_click"
                 context="solucoes_ecossistema"
@@ -287,9 +287,9 @@ export default function Page() {
 
           <div className="hidden md:grid md:grid-cols-3 gap-8">
             <SolucaoCard
-              image="/images/tetel-curadoria-ofertas.jpg"
+              image="/images/tetel-shopee.jpg"
               title="Curadoria de Ofertas Selecionadas"
-              desc="Seleção criteriosa de produtos e oportunidades com foco em utilidade real, custo-benefício e confiança."
+              desc="Selecao criteriosa de produtos e oportunidades com foco em utilidade real, custo-beneficio e confianca."
               href="https://tetelpontocomspee.tetel.online/?origem=tetelpontocom"
               event="tetel_solution_click"
               context="solucoes_ecossistema"
@@ -298,7 +298,7 @@ export default function Page() {
             <SolucaoCard
               image="/images/tetel-minha-ia.jpg"
               title="Minha IA"
-              desc="Eixo do ecossistema: inteligencia artificial + método, do acolhimento a execução."
+              desc="Eixo do ecossistema: inteligencia artificial + metodo, do acolhimento a execucao."
               href="https://minhaia.tetel.online/?origem=tetelpontocom"
               ctaLabel="Entender Minha IA →"
               event="tetel_minhaia_click"
